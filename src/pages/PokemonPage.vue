@@ -5,10 +5,7 @@
     <!-- img -->
     <pokemon-picture :pokemonId="pokemon.id" :showPokemon="showPokemon" />
     <!-- opciones -->
-    <pokemon-options
-      :pokemons="pokemonArr"
-      @selection-pokemon="checkAnswer($event)"
-    />
+    <pokemon-options :pokemons="pokemonArr" @selection-pokemon="checkAnswer" />
     <!--Escuchamos el evento personalizado cuando se emita desde el componente hijo, para luego ejecutar un method-->
 
     <div v-if="showAnswer">
@@ -75,26 +72,28 @@ export default {
       this.pokemon = this.pokemonArr[rdnInt]; //Sacamos un pokemon alazar del array de 4 pokemones
     },
 
-    checkAnswer(selectedId) {
-      console.log(selectedId);
+    checkAnswer(selectedId, element) {
+      console.log(element);
 
       this.showPokemon = true;
       this.showAnswer = true;
 
       if (selectedId === this.pokemon.id) {
         this.result = true;
+        element.target.className += "selectedCorrect";
       } else {
         this.result = false;
+        element.target.className += "selectedWrong";
       }
     },
 
     newGame() {
-      this.pokemonArr = [],
-      this.pokemon = null,
-      this.showPokemon = false,
-      this.showAnswer = false,
-      this.mixPokemonArray()
-    }
+      (this.pokemonArr = []),
+        (this.pokemon = null),
+        (this.showPokemon = false),
+        (this.showAnswer = false),
+        this.mixPokemonArray();
+    },
   },
 
   mounted() {

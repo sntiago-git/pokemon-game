@@ -15,11 +15,11 @@ export default {
       default: 1,
       required: true,
     },
-    showPokemon:{
+    showPokemon: {
       type: Boolean,
       default: false,
-      required: true
-    }
+      required: true,
+    },
   },
 
   computed: {
