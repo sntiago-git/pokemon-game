@@ -50,9 +50,6 @@ li {
   width: 250px;
 }
 
-li:hover {
-  background-color: rgba(0, 0, 0, 0.1);
-}
 
 .options-container {
   display: flex;
@@ -71,5 +68,11 @@ li:hover {
   color: white;
   pointer-events: none;
   animation: fadeIn 0.5s;
+}
+
+
+
+@media (hover: hover) and (pointer: fine) {
+  li:hover {  background-color: rgba(0, 0, 0, 0.1); }
 }
 </style>
